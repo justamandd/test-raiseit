@@ -1,8 +1,6 @@
 import { BmiCalculator } from "@entities/BmiCalculator";
 import { BmiCategoryEnum } from "@entities/BmiCategoryEnum";
 import { Pokemon } from "@entities/Pokemon";
-import dotenv from "dotenv";
-dotenv.config();
 
 const mockBmiCalculator: BmiCalculator = {
   calculate: jest.fn((height: number, weight: number) => 0.01),
