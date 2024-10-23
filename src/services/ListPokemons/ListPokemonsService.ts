@@ -4,15 +4,11 @@ import { BmiCalculator } from "@entities/BmiCalculator";
 import { Pokemon } from "@entities/Pokemon";
 
 export class ListPokemonsService implements IListPokemons {
-  private pokeapi_url: string;
-  private pokeapi_list_route: string;
-  private bmiCalculator: BmiCalculator;
-
-  constructor(pokeapi_url: string, pokeapi_list_route: string, bmiCalculator: BmiCalculator) {
-    this.pokeapi_url = pokeapi_url;
-    this.pokeapi_list_route = pokeapi_list_route
-    this.bmiCalculator = bmiCalculator;
-  }
+  constructor(
+    private pokeapi_url: string, 
+    private pokeapi_list_route: string, 
+    private bmiCalculator: BmiCalculator
+  ) {}
 
   async getPokemons(limit?: number): Promise<Pokemon[]> {
     let url = `${this.pokeapi_url}${this.pokeapi_list_route}`;
