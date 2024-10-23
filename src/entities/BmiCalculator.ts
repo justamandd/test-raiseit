@@ -2,7 +2,7 @@ import { BmiCategoryEnum } from "@entities/BmiCategoryEnum";
 
 export class BmiCalculator {
   public calculate(height: number, weight: number): number {
-    return weight / Math.pow(height, 2);
+    return parseFloat((weight / Math.pow(height, 2)).toFixed(2));
   }
 
   public getCategory(bmi: number): BmiCategoryEnum {
