@@ -17,7 +17,13 @@ export class ListPokemonsService implements IListPokemons {
       url = `${url}?limit=${limit}&offset=0`;
     }
 
-    const response = await axios(url);
+    let response;
+
+    try {
+      response = await axios(url);
+    } catch (err) {
+      throw new Error('Error fetching');
+    }
 
     if (response.status !== 200 || !response.data.results) {
       throw new Error('Error fetching');
