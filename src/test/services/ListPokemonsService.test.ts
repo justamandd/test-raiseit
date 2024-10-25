@@ -3,9 +3,15 @@ dotenv.config();
 
 import { BmiCalculator } from "@entities/BmiCalculator";
 import { ListPokemonsService } from "@services/ListPokemons/ListPokemonsService";
+import { BmiClassifier } from "@entities/BmiClassifier";
+import { HeightConverter } from "@entities/HeightConverter";
+import { WeightConverter } from "@entities/WeightConverter";
 
 describe('ListPokemonsService', () => {
   const bmiCalculator = new BmiCalculator();
+  const bmiClassifier = new BmiClassifier();
+  const heightConverter = new HeightConverter();
+  const weightConverter = new WeightConverter();
 
   let listPokemonsService: ListPokemonsService;
 
@@ -13,7 +19,10 @@ describe('ListPokemonsService', () => {
     listPokemonsService = new ListPokemonsService(
       process.env.POKEAPI_URL!,
       process.env.POKEAPI_LIST_ROUTE!,
-      bmiCalculator
+      bmiCalculator,
+      bmiClassifier,
+      weightConverter,
+      heightConverter,
     );
 
     const pokemons = await listPokemonsService.getPokemons(5);
@@ -25,7 +34,10 @@ describe('ListPokemonsService', () => {
     listPokemonsService = new ListPokemonsService(
       "https://pokeapia.co/api/v2/",
       process.env.POKEAPI_LIST_ROUTE!,
-      bmiCalculator
+      bmiCalculator,
+      bmiClassifier,
+      weightConverter,
+      heightConverter,
     );
 
     expect(listPokemonsService.getPokemons()).rejects.toThrow()
