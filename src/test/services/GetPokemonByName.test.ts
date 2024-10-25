@@ -21,7 +21,7 @@ describe('GetPokemonByName', () => {
     expect(pokemon.name).toBe("pikachu");
   });
 
-  it('should return a error', async () => {
+  it('should return a error by wrong url', async () => {
     getPokemonByName = new GetPokemonByNameService(
       "https://pokeapia.co/api/v2/",
       process.env.POKEAPI_FIND_ROUTE!,
@@ -29,5 +29,15 @@ describe('GetPokemonByName', () => {
     );
 
     expect(getPokemonByName.getPokemonByName("pikachu")).rejects.toThrow()
+  })
+
+  it('should return a error by wrong pokemon name', async () => {
+    getPokemonByName = new GetPokemonByNameService(
+      process.env.POKEAPI_URL!,
+      process.env.POKEAPI_FIND_ROUTE!,
+      bmiCalculator
+    );
+
+    expect(getPokemonByName.getPokemonByName("pikach")).rejects.toThrow()
   })
 })
