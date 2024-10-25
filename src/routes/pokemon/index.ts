@@ -4,7 +4,7 @@ import { routes as getPokemonByNameRoute } from "./getPokemonByName.routes";
 
 const routes  = Router();
 
-routes.use("/pokemon",listPokemonsRoute);
-routes.use("/pokemon",getPokemonByNameRoute);
+routes.use("/pokemons",listPokemonsRoute);
+routes.use("/pokemons",getPokemonByNameRoute);
 
 export { routes };
