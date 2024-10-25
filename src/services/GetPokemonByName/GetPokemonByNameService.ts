@@ -2,13 +2,19 @@ import axios, { AxiosResponse } from "axios";
 import { Pokemon } from "@entities/Pokemon";
 import { IGetPokemonByName } from "./IGetPokemonByName";
 import { BmiCalculator } from "@entities/BmiCalculator";
+import { BmiClassifier } from "@entities/BmiClassifier";
+import { WeightConverter } from "@entities/WeightConverter";
+import { HeightConverter } from "@entities/HeightConverter";
 
 
 export class GetPokemonByNameService implements IGetPokemonByName {
   constructor(
     private pokeapi_url: string, 
     private pokeapi_find_route: string, 
-    private bmiCalculator: BmiCalculator
+    private bmiCalculator: BmiCalculator,
+    private bmiClassifier: BmiClassifier,
+    private weightConverter: WeightConverter,
+    private heightConverter: HeightConverter
   ) {}
 
   async getPokemonByName(name: string): Promise<Pokemon> {
@@ -32,7 +38,10 @@ export class GetPokemonByNameService implements IGetPokemonByName {
         name: response.data.name,
         height: response.data.height,
         weight: response.data.weight,
-        bmiCalculator: this.bmiCalculator
+        bmiCalculator: this.bmiCalculator,
+        bmiClassifier: this.bmiClassifier,
+        weightConverter: this.weightConverter,
+        heightConverter: this.heightConverter
       }
     );
 

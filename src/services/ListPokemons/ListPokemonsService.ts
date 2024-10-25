@@ -2,12 +2,18 @@ import axios from "axios";
 import { IListPokemons } from "@services/ListPokemons/IListPokemons";
 import { BmiCalculator } from "@entities/BmiCalculator";
 import { Pokemon } from "@entities/Pokemon";
+import { BmiClassifier } from "@entities/BmiClassifier";
+import { WeightConverter } from "@entities/WeightConverter";
+import { HeightConverter } from "@entities/HeightConverter";
 
 export class ListPokemonsService implements IListPokemons {
   constructor(
     private pokeapi_url: string, 
     private pokeapi_list_route: string, 
-    private bmiCalculator: BmiCalculator
+    private bmiCalculator: BmiCalculator,
+    private bmiClassifier: BmiClassifier,
+    private weightConverter: WeightConverter,
+    private heightConverter: HeightConverter
   ) {}
 
   async getPokemons(limit?: number): Promise<Pokemon[]> {
@@ -41,7 +47,10 @@ export class ListPokemonsService implements IListPokemons {
           name: pokemon.name,
           height: pokemon.height,
           weight: pokemon.weight,
-          bmiCalculator: this.bmiCalculator
+          bmiCalculator: this.bmiCalculator,
+          bmiClassifier: this.bmiClassifier,
+          weightConverter: this.weightConverter,
+          heightConverter: this.heightConverter
         }
       ) ;
     });
