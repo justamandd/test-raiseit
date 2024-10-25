@@ -25,7 +25,7 @@ export class GetPokemonByNameService implements IGetPokemonByName {
     }
 
     if (response.status !== 200 || !response.data) {
-      throw new Error('Error fetching');
+      throw new Error('Error fetching Pokemon: ' + name);
     }
 
     const pokemon = new Pokemon({ 
