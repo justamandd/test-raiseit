@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { IListPokemons } from "@services/ListPokemons/IListPokemons";
 import { BmiCalculator } from "@entities/BmiCalculator";
 import { Pokemon } from "@entities/Pokemon";
@@ -28,7 +28,9 @@ export class ListPokemonsService implements IListPokemons {
     try {
       response = await axios(url);
     } catch (err) {
-      throw new Error('Error fetching');
+      const error = err as AxiosError;
+
+      throw new Error(error.message);
     }
 
     if (response.status !== 200 || !response.data.results) {
