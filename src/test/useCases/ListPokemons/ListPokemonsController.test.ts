@@ -22,11 +22,11 @@ const listPokemonsService = new ListPokemonsService(
 const listPokemonsUseCase = new ListPokemonsUseCase(listPokemonsService);
 const listPokemonsController = new ListPokemonsController(listPokemonsUseCase);
 
-app.get('/pokemon', async (req: Request, res: Response) => await listPokemonsController.handle(req, res));
+app.get('/pokemons', async (req: Request, res: Response) => await listPokemonsController.handle(req, res));
 
 describe('ListPokemonsController', () => {
   it('should return a list of pokemons with status 200', async () => {
-    const response = await request(app).get('/pokemon?limit=20');
+    const response = await request(app).get('/pokemons?limit=20');
     expect(response.status).toBe(200);
     expect(response.body).toHaveLength(20);
   })
