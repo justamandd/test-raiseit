@@ -17,7 +17,7 @@ const listPokemonsService = new ListPokemonsService(
 const listPokemonsUseCase = new ListPokemonsUseCase(listPokemonsService);
 const listPokemonsController = new ListPokemonsController(listPokemonsUseCase);
 
-routes.get('/pokemons', async (req, res) => {
+routes.get('/', async (req, res) => {
   await listPokemonsController.handle(req, res);
 });
 
