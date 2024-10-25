@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError } from "axios";
 import { Pokemon } from "@entities/Pokemon";
 import { IGetPokemonByName } from "./IGetPokemonByName";
 import { BmiCalculator } from "@entities/BmiCalculator";
@@ -25,8 +25,12 @@ export class GetPokemonByNameService implements IGetPokemonByName {
     try {
       response = await axios(url);
     } catch (err) {
-      const error = err as Error;
+      const error = err as AxiosError;
 
+      if(error.status == 404){
+        throw new Error('Pokemon not found: ' + name);
+      }
+      
       throw new Error(error.message);
     }
 
