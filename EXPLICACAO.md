@@ -14,6 +14,12 @@ A API segue o padrão RESTful, utilizando o padrão DDD (arquitetura orientada a
 
 A API foi desenvolvida em TypeScript utilizando o framework Express para lidar com as requisições HTTP. O Axios foi utilizado para consumir dados externos de uma API pública (PokeAPI). Para validações, utilizei utilitários personalizados e a arquitetura da API foi orientada a casos de uso. O Postman foi utilizado para testes manuais, e o Jest para testes unitários. Por fim, para a documentação da API foi utilizado o SwaggerAPI
 
+A documentação feita com Swagger pode ser encontrada ao rodar o projeto e entrar na rota /api-docs:
+Exemplo:
+``` curl
+http://localhost:3000/api-docs
+```
+
 ## Princípios de Design Seguidos
 
 A API foi desenvolvida seguindo os princípios do SOLID. 
