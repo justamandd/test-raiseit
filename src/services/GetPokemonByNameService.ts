@@ -1,20 +1,14 @@
 import axios, { AxiosError } from "axios";
 import { Pokemon } from "@entities/Pokemon";
 import { IGetPokemonByName } from "../interfaces/services/IGetPokemonByName";
-import { BmiCalculator } from "@utils/BmiCalculator";
-import { BmiClassifier } from "@utils/BmiClassifier";
-import { WeightConverter } from "@utils/WeightConverter";
-import { HeightConverter } from "@utils/HeightConverter";
+import { PokemonFactory } from "@factories/PokemonFactory";
 
 
 export class GetPokemonByNameService implements IGetPokemonByName {
   constructor(
     private pokeapi_url: string, 
     private pokeapi_find_route: string, 
-    private bmiCalculator: BmiCalculator,
-    private bmiClassifier: BmiClassifier,
-    private weightConverter: WeightConverter,
-    private heightConverter: HeightConverter
+    private pokemonFactory: PokemonFactory
   ) {}
 
   async getPokemonByName(name: string): Promise<Pokemon> {
@@ -38,17 +32,10 @@ export class GetPokemonByNameService implements IGetPokemonByName {
       throw new Error('Error fetching Pokemon: ' + name);
     }
 
-    const pokemon = new Pokemon({ 
-        name: response.data.name,
-        height: response.data.height,
-        weight: response.data.weight,
-        bmiCalculator: this.bmiCalculator,
-        bmiClassifier: this.bmiClassifier,
-        weightConverter: this.weightConverter,
-        heightConverter: this.heightConverter
-      }
-    );
-
-    return pokemon;
+    return this.pokemonFactory.createPokemon({
+      name: response.data.name,
+      height: response.data.height,
+      weight: response.data.weight,
+    });
   }
 }
