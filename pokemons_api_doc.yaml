@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info:
+  title: Teste Raise-IT
+  version: 1.0.0
+servers:
+  - url: https://localhost:3000
+tags:
+  - name: pokemons
+    description: Everything about Pokemons
+paths:
+  /pokemons:
+    get:
+      tags: 
+       - pokemons
+      summary: Fetch all Pokemons
+      description: Fetch all Pokemons
+      operationId: getAllPokemons
+      parameters:
+        - name: limit
+          in: query
+          description: How many Pokemons you want to fetch
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful fetching
+          content:
+            application/json:
+              example:
+                - name: "Pikachu"
+                  height: 0.4
+                  weight: 6.0
+                  bmi: 37.5
+                  category: "Pesado"
+                - name: "Bulbasaur"
+                  height: 0.7
+                  weight: 6.9
+                  bmi: 14.1
+                  category: "Médio"
+                - name: "Charmander"
+                  height: 0.6
+                  weight: 8.5
+                  bmi: 23.6
+                  category: "Médio"
+        "400":
+          description: Error fetching
+          content:
+            application/json:
+              example:
+                - message: "Error fetching"
+  /pokemons/{name}:
+    get:
+      tags: 
+       - pokemons
+      summary: Fetch a Pokemon by name
+      description: Fetch a Pokemon by name
+      operationId: getPokemonByName
+      parameters:
+        - name: name
+          in: path
+          description: Pokemon name you want to fetch
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful fetching
+          content:
+            application/json:
+              example:
+                - name: "Pikachu"
+                  height: 0.4
+                  weight: 6.0
+                  bmi: 37.5
+                  category: "Pesado"
+        "400":
+          description: Error fetching
+          content:
+            application/json:
+              example:
+                - message: "Error fetching Pokemon: Pikach"
+        "404":
+          description: Pokemon not found
+          content:
+            application/json:
+              example:
+                - message: "Pokemon not found: Pikach"
+        
