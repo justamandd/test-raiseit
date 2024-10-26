@@ -14,7 +14,7 @@ paths:
        - pokemons
       summary: Fetch all Pokemons
       description: Fetch all Pokemons
-      operationId: getAllPokemons
+      operationId: ListPokemons
       parameters:
         - name: limit
           in: query
