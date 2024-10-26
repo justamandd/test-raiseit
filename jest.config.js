@@ -15,5 +15,6 @@ module.exports = {
     '^@utils/(.*)$': '<rootDir>/src/utils/$1',
     '^@dto/(.*)$': '<rootDir>/src/dto/$1',
     '^@controllers/(.*)$': '<rootDir>/src/controllers/$1',
+    '^@middlewares/(.*)$': '<rootDir>/src/middlewares/$1',
   }
 };
