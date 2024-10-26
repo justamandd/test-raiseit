@@ -11,6 +11,7 @@ import { ListPokemonsUseCase } from "@useCases/ListPokemonsUseCase";
 import { BmiClassifier } from "@utils/BmiClassifier";
 import { HeightConverter } from "@utils/HeightConverter";
 import { WeightConverter } from "@utils/WeightConverter";
+import { PokemonFactory } from "@factories/PokemonFactory";
 
 const app: Express = express();
 app.use(express.json());
@@ -20,13 +21,12 @@ const bmiClassifier = new BmiClassifier();
 const heightConverter = new HeightConverter();
 const weightConverter = new WeightConverter();
 
+const pokemonFactory = new PokemonFactory(bmiCalculator, bmiClassifier, weightConverter, heightConverter);
+
 const listPokemonsService = new ListPokemonsService(
   process.env.POKEAPI_URL!, 
-  process.env.POKEAPI_LIST_ROUTE!, 
-  bmiCalculator,
-  bmiClassifier,
-  weightConverter,
-  heightConverter,
+  process.env.POKEAPI_LIST_ROUTE!,
+  pokemonFactory
 );
 const listPokemonsUseCase = new ListPokemonsUseCase(listPokemonsService);
 const listPokemonsController = new ListPokemonsController(listPokemonsUseCase);

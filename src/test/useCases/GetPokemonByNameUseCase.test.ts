@@ -7,6 +7,7 @@ import { GetPokemonByNameUseCase } from "@useCases/GetPokemonByNameUseCase";
 import { BmiClassifier } from "@utils/BmiClassifier";
 import { HeightConverter } from "@utils/HeightConverter";
 import { WeightConverter } from "@utils/WeightConverter";
+import { PokemonFactory } from "@factories/PokemonFactory";
 
 describe('GetPokemonByNameUseCase', () => {
   const bmiCalculator = new BmiCalculator();
@@ -14,13 +15,13 @@ describe('GetPokemonByNameUseCase', () => {
   const heightConverter = new HeightConverter();
   const weightConverter = new WeightConverter();
 
+  const pokemonFactory = new PokemonFactory(bmiCalculator, bmiClassifier, weightConverter, heightConverter);
+
+
   const getPokemonByNameService: GetPokemonByNameService = new GetPokemonByNameService(
     process.env.POKEAPI_URL!,
     process.env.POKEAPI_FIND_ROUTE!,
-    bmiCalculator,
-    bmiClassifier,
-    weightConverter,
-    heightConverter,
+    pokemonFactory
   );
 
   const getPokemonByNameUseCase = new GetPokemonByNameUseCase(getPokemonByNameService);

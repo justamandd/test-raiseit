@@ -6,6 +6,7 @@ import { GetPokemonByNameService } from "@services/GetPokemonByNameService";
 import { BmiClassifier } from "@utils/BmiClassifier";
 import { HeightConverter } from "@utils/HeightConverter";
 import { WeightConverter } from "@utils/WeightConverter";
+import { PokemonFactory } from "@factories/PokemonFactory";
 
 describe('GetPokemonByName', () => {
   const bmiCalculator = new BmiCalculator();
@@ -13,16 +14,16 @@ describe('GetPokemonByName', () => {
   const heightConverter = new HeightConverter();
   const weightConverter = new WeightConverter();
 
+  const pokemonFactory = new PokemonFactory(bmiCalculator, bmiClassifier, weightConverter, heightConverter);
+
+
   let getPokemonByName: GetPokemonByNameService;
 
   it('should fetch a pokemon', async () => {
     getPokemonByName = new GetPokemonByNameService(
       process.env.POKEAPI_URL!,
       process.env.POKEAPI_FIND_ROUTE!,
-      bmiCalculator,
-      bmiClassifier,
-      weightConverter,
-      heightConverter,
+      pokemonFactory,
     );
 
     const pokemon = await getPokemonByName.getPokemonByName("pikachu");
@@ -34,10 +35,7 @@ describe('GetPokemonByName', () => {
     getPokemonByName = new GetPokemonByNameService(
       "https://pokeapia.co/api/v2/",
       process.env.POKEAPI_FIND_ROUTE!,
-      bmiCalculator,
-      bmiClassifier,
-      weightConverter,
-      heightConverter,
+      pokemonFactory,
     );
 
     expect(getPokemonByName.getPokemonByName("pikachu")).rejects.toThrow()
@@ -47,10 +45,7 @@ describe('GetPokemonByName', () => {
     getPokemonByName = new GetPokemonByNameService(
       process.env.POKEAPI_URL!,
       process.env.POKEAPI_FIND_ROUTE!,
-      bmiCalculator,
-      bmiClassifier,
-      weightConverter,
-      heightConverter,
+      pokemonFactory
     );
 
     expect(getPokemonByName.getPokemonByName("pikach")).rejects.toThrow()

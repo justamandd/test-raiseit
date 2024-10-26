@@ -10,6 +10,7 @@ import { GetPokemonByNameController } from "@controllers/GetPokemonByNameControl
 import { BmiClassifier } from "@utils/BmiClassifier";
 import { HeightConverter } from "@utils/HeightConverter";
 import { WeightConverter } from "@utils/WeightConverter";
+import { PokemonFactory } from "@factories/PokemonFactory";
 
 const app: Express = express();
 app.use(express.json());
@@ -19,13 +20,12 @@ const bmiClassifier = new BmiClassifier();
 const heightConverter = new HeightConverter();
 const weightConverter = new WeightConverter();
 
+const pokemonFactory = new PokemonFactory(bmiCalculator, bmiClassifier, weightConverter, heightConverter);
+
 const getPokemonByNameService = new GetPokemonByNameService(
   process.env.POKEAPI_URL!, 
   process.env.POKEAPI_FIND_ROUTE!, 
-  bmiCalculator,
-  bmiClassifier,
-  weightConverter,
-  heightConverter,
+  pokemonFactory
 );
 
 const getPokemonByNameUseCase = new GetPokemonByNameUseCase(getPokemonByNameService);
