@@ -1,3 +1,5 @@
+Para visualizar documentação feita em LaTeX, como a conversão de medidas leia fora do GitHub.
+
 # Como a API foi desenvolvida
 
 ## Descrição Geral
