@@ -8,6 +8,7 @@ import { BmiClassifier } from "@utils/BmiClassifier";
 import { WeightConverter } from "@utils/WeightConverter";
 import { HeightConverter } from "@utils/HeightConverter";
 import { validatePokemonLimit } from "@middlewares/validatePokemonLimit";
+import { PokemonFactory } from "@factories/PokemonFactory";
 
 const routes  = Router();
 
@@ -15,14 +16,12 @@ const bmiCalculator = new BmiCalculator();
 const bmiClassifier = new BmiClassifier();
 const weightConverter = new WeightConverter();
 const heightConverter = new HeightConverter();
+const pokemonFactory = new PokemonFactory(bmiCalculator, bmiClassifier, weightConverter, heightConverter);
 
 const listPokemonsService = new ListPokemonsService(
   process.env.POKEAPI_URL!, 
-  process.env.POKEAPI_LIST_ROUTE!, 
-  bmiCalculator,
-  bmiClassifier,
-  weightConverter,
-  heightConverter
+  process.env.POKEAPI_LIST_ROUTE!,
+  pokemonFactory
 );
 const listPokemonsUseCase = new ListPokemonsUseCase(listPokemonsService);
 const listPokemonsController = new ListPokemonsController(listPokemonsUseCase);

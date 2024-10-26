@@ -7,7 +7,8 @@ import { GetPokemonByNameController } from "@controllers/GetPokemonByNameControl
 import { BmiClassifier } from "@utils/BmiClassifier";
 import { WeightConverter } from "@utils/WeightConverter";
 import { HeightConverter } from "@utils/HeightConverter";
-import { validatePokemonName } from "@middlewares/ValidatePokemonName";
+import { validatePokemonName } from "@middlewares/validatePokemonName";
+import { PokemonFactory } from "@factories/PokemonFactory";
 
 const routes  = Router();
 
@@ -16,13 +17,12 @@ const bmiClassifier = new BmiClassifier();
 const weightConverter = new WeightConverter();
 const heightConverter = new HeightConverter();
 
+const pokemonFactory = new PokemonFactory(bmiCalculator, bmiClassifier, weightConverter, heightConverter);
+
 const getPokemonByNameService = new GetPokemonByNameService(
   process.env.POKEAPI_URL!, 
   process.env.POKEAPI_FIND_ROUTE!, 
-  bmiCalculator,
-  bmiClassifier,
-  weightConverter,
-  heightConverter
+  pokemonFactory
 );
 
 const getPokemonByNameUseCase = new GetPokemonByNameUseCase(getPokemonByNameService);
