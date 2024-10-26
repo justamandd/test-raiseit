@@ -1,19 +1,13 @@
 import axios, { AxiosError } from "axios";
 import { IListPokemons } from "@interfaces/services/IListPokemons";
-import { BmiCalculator } from "@utils/BmiCalculator";
 import { Pokemon } from "@entities/Pokemon";
-import { BmiClassifier } from "@utils/BmiClassifier";
-import { WeightConverter } from "@utils/WeightConverter";
-import { HeightConverter } from "@utils/HeightConverter";
+import { PokemonFactory } from "@factories/PokemonFactory";
 
 export class ListPokemonsService implements IListPokemons {
   constructor(
     private pokeapi_url: string, 
     private pokeapi_list_route: string, 
-    private bmiCalculator: BmiCalculator,
-    private bmiClassifier: BmiClassifier,
-    private weightConverter: WeightConverter,
-    private heightConverter: HeightConverter
+    private pokemonFactory: PokemonFactory
   ) {}
 
   async getPokemons(limit?: number): Promise<Pokemon[]> {
@@ -44,19 +38,6 @@ export class ListPokemonsService implements IListPokemons {
       return pokemonData.data;
     }));
 
-    const pokemons = pokemonsDetails.map((pokemon: any) => {
-      return new Pokemon({ 
-          name: pokemon.name,
-          height: pokemon.height,
-          weight: pokemon.weight,
-          bmiCalculator: this.bmiCalculator,
-          bmiClassifier: this.bmiClassifier,
-          weightConverter: this.weightConverter,
-          heightConverter: this.heightConverter
-        }
-      ) ;
-    });
-
-    return pokemons;
+    return this.pokemonFactory.createPokemons(pokemonsDetails);
   }
 }
