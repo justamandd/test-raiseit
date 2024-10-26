@@ -7,6 +7,7 @@ import { ListPokemonsUseCase } from "@useCases/ListPokemonsUseCase";
 import { BmiClassifier } from "@utils/BmiClassifier";
 import { WeightConverter } from "@utils/WeightConverter";
 import { HeightConverter } from "@utils/HeightConverter";
+import { validatePokemonLimit } from "@middlewares/validatePokemonLimit";
 
 const routes  = Router();
 
@@ -26,7 +27,7 @@ const listPokemonsService = new ListPokemonsService(
 const listPokemonsUseCase = new ListPokemonsUseCase(listPokemonsService);
 const listPokemonsController = new ListPokemonsController(listPokemonsUseCase);
 
-routes.get('/', async (req, res) => {
+routes.get('/', validatePokemonLimit, async (req, res) => {
   await listPokemonsController.handle(req, res);
 });
 

@@ -11,16 +11,7 @@ export class ListPokemonsController {
       let pokemons;
 
       if (limit) {
-        const limitNumber = parseInt(limit as string)
-
-        if (isNaN(limitNumber)) {
-          return res.status(400).json({
-            message: 'Invalid limit'
-          });
-        }
-
-        pokemons = await this.listPokemonsUseCase.execute(limitNumber);
-        
+        pokemons = await this.listPokemonsUseCase.execute(parseInt(limit as string));
       } else {
         pokemons = await this.listPokemonsUseCase.execute();
       }
