@@ -7,6 +7,7 @@ import { GetPokemonByNameController } from "@controllers/GetPokemonByNameControl
 import { BmiClassifier } from "@utils/BmiClassifier";
 import { WeightConverter } from "@utils/WeightConverter";
 import { HeightConverter } from "@utils/HeightConverter";
+import { validatePokemonName } from "@middlewares/ValidatePokemonName";
 
 const routes  = Router();
 
@@ -27,7 +28,7 @@ const getPokemonByNameService = new GetPokemonByNameService(
 const getPokemonByNameUseCase = new GetPokemonByNameUseCase(getPokemonByNameService);
 const getPokemonByNameController = new GetPokemonByNameController(getPokemonByNameUseCase);
 
-routes.get('/:name', async (req, res) => {
+routes.get('/:name', validatePokemonName, async (req, res) => {
   await getPokemonByNameController.handle(req, res);
 });
 
