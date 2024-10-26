@@ -8,10 +8,6 @@ export class GetPokemonByNameUseCase {
 
   async execute(name: string): Promise<GetPokemonByNameDTO> {
     
-    if (!name) {
-      throw new Error('Name is required');
-    }
-
     const pokemon = await this.getPokemonByNameService.getPokemonByName(name);
 
     return {
