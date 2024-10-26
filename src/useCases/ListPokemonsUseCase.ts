@@ -1,5 +1,5 @@
-import { ListPokemonsService } from "@services/ListPokemons/ListPokemonsService";
-import { ListPokemonsDTO } from "@useCases/ListPokemons/ListPokemonsDTO";
+import { ListPokemonsService } from "@services/ListPokemonsService";
+import { ListPokemonsDTO } from "@dto/ListPokemonsDTO";
 
 export class ListPokemonsUseCase {
   

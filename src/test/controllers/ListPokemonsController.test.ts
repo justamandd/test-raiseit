@@ -4,13 +4,13 @@ dotenv.config();
 import request from 'supertest';
 import express, { Express, Request, Response } from 'express';
 
-import { BmiCalculator } from "@entities/BmiCalculator";
-import { ListPokemonsService } from "@services/ListPokemons/ListPokemonsService";
-import { ListPokemonsController } from "@useCases/ListPokemons/ListPokemonsController";
-import { ListPokemonsUseCase } from "@useCases/ListPokemons/ListPokemonsUseCase";
-import { BmiClassifier } from "@entities/BmiClassifier";
-import { HeightConverter } from "@entities/HeightConverter";
-import { WeightConverter } from "@entities/WeightConverter";
+import { BmiCalculator } from "@utils/BmiCalculator";
+import { ListPokemonsService } from "@services/ListPokemonsService";
+import { ListPokemonsController } from "@controllers/ListPokemonsController";
+import { ListPokemonsUseCase } from "@useCases/ListPokemonsUseCase";
+import { BmiClassifier } from "@utils/BmiClassifier";
+import { HeightConverter } from "@utils/HeightConverter";
+import { WeightConverter } from "@utils/WeightConverter";
 
 const app: Express = express();
 app.use(express.json());

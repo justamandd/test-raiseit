@@ -1,5 +1,5 @@
-import { GetPokemonByNameDTO } from "./GetPokemonByNameDTO";
-import { GetPokemonByNameService } from "@services/GetPokemonByName/GetPokemonByNameService";
+import { GetPokemonByNameDTO } from "../dto/GetPokemonByNameDTO";
+import { GetPokemonByNameService } from "@services/GetPokemonByNameService";
 
 export class GetPokemonByNameUseCase {
   constructor(

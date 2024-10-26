@@ -1,10 +1,10 @@
 import axios, { AxiosError } from "axios";
 import { Pokemon } from "@entities/Pokemon";
-import { IGetPokemonByName } from "./IGetPokemonByName";
-import { BmiCalculator } from "@entities/BmiCalculator";
-import { BmiClassifier } from "@entities/BmiClassifier";
-import { WeightConverter } from "@entities/WeightConverter";
-import { HeightConverter } from "@entities/HeightConverter";
+import { IGetPokemonByName } from "../interfaces/services/IGetPokemonByName";
+import { BmiCalculator } from "@utils/BmiCalculator";
+import { BmiClassifier } from "@utils/BmiClassifier";
+import { WeightConverter } from "@utils/WeightConverter";
+import { HeightConverter } from "@utils/HeightConverter";
 
 
 export class GetPokemonByNameService implements IGetPokemonByName {

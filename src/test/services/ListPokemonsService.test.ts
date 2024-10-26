@@ -1,11 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import { BmiCalculator } from "@entities/BmiCalculator";
-import { ListPokemonsService } from "@services/ListPokemons/ListPokemonsService";
-import { BmiClassifier } from "@entities/BmiClassifier";
-import { HeightConverter } from "@entities/HeightConverter";
-import { WeightConverter } from "@entities/WeightConverter";
+import { BmiCalculator } from "@utils/BmiCalculator";
+import { ListPokemonsService } from "@services/ListPokemonsService";
+import { BmiClassifier } from "@utils/BmiClassifier";
+import { HeightConverter } from "@utils/HeightConverter";
+import { WeightConverter } from "@utils/WeightConverter";
 
 describe('ListPokemonsService', () => {
   const bmiCalculator = new BmiCalculator();

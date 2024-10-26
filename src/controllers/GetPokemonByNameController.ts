@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { GetPokemonByNameUseCase } from "@useCases/GetPokemonByName/GetPokemonByNameUseCase";
+import { GetPokemonByNameUseCase } from "@useCases/GetPokemonByNameUseCase";
 
 export class GetPokemonByNameController {
   constructor(

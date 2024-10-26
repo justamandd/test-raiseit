@@ -1,4 +1,4 @@
-import { BmiClassifier } from "@entities/BmiClassifier";
+import { BmiClassifier } from "@utils/BmiClassifier";
 
 
 describe("BmiCalculator", () => {

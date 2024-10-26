@@ -1,4 +1,4 @@
-import { BmiCategoryEnum } from "@entities/BmiCategoryEnum";
+import { BmiCategoryEnum } from "@enums/BmiCategoryEnum";
 
 export interface ListPokemonsDTO {
   name: string;

@@ -1,10 +1,10 @@
 import axios, { AxiosError } from "axios";
-import { IListPokemons } from "@services/ListPokemons/IListPokemons";
-import { BmiCalculator } from "@entities/BmiCalculator";
+import { IListPokemons } from "@interfaces/services/IListPokemons";
+import { BmiCalculator } from "@utils/BmiCalculator";
 import { Pokemon } from "@entities/Pokemon";
-import { BmiClassifier } from "@entities/BmiClassifier";
-import { WeightConverter } from "@entities/WeightConverter";
-import { HeightConverter } from "@entities/HeightConverter";
+import { BmiClassifier } from "@utils/BmiClassifier";
+import { WeightConverter } from "@utils/WeightConverter";
+import { HeightConverter } from "@utils/HeightConverter";
 
 export class ListPokemonsService implements IListPokemons {
   constructor(

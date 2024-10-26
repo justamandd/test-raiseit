@@ -1,4 +1,4 @@
-import { BmiCalculator } from "@entities/BmiCalculator";
+import { BmiCalculator } from "@utils/BmiCalculator";
 
 describe("BmiCalculator", () => {
   let bmiCalculator: BmiCalculator;

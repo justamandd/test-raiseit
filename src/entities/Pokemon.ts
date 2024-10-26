@@ -1,19 +1,21 @@
-import { BmiCategoryEnum } from "@entities/BmiCategoryEnum";
-import { BmiCalculator } from "@entities/BmiCalculator";
-import { BmiClassifier } from "./BmiClassifier";
-import { WeightConverter } from "./WeightConverter";
-import { HeightConverter } from "./HeightConverter";
+import { BmiCategoryEnum } from "@enums/BmiCategoryEnum";
+import { BmiCalculator } from "@utils/BmiCalculator";
+import { BmiClassifier } from "@utils/BmiClassifier";
+import { WeightConverter } from "../utils/WeightConverter";
+import { HeightConverter } from "../utils/HeightConverter";
+import { IPokemon } from "@interfaces/entities/IPokemon";
 
-export class Pokemon{
+export class Pokemon implements IPokemon {
   name: string;
   height: number;
   weight: number;
+  bmi?: number | undefined;
+  category?: BmiCategoryEnum | undefined;
+
   bmiCalculator: BmiCalculator;
   bmiClassifier: BmiClassifier;
   weightConverter: WeightConverter;
   heightConverter: HeightConverter;
-  bmi?: number | undefined;
-  category?: BmiCategoryEnum | undefined;
 
   public constructor(props: Omit<Pokemon, 'bmi' | 'category'>, bmi?: number, category?: BmiCategoryEnum) {
     this.name = props.name;

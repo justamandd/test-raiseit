@@ -1,12 +1,12 @@
 import { Router } from "express";
 
-import { BmiCalculator } from "@entities/BmiCalculator";
-import { GetPokemonByNameService } from "@services/GetPokemonByName/GetPokemonByNameService";
-import { GetPokemonByNameUseCase } from "@useCases/GetPokemonByName/GetPokemonByNameUseCase";
-import { GetPokemonByNameController } from "@useCases/GetPokemonByName/GetPokemonByNameController";
-import { BmiClassifier } from "@entities/BmiClassifier";
-import { WeightConverter } from "@entities/WeightConverter";
-import { HeightConverter } from "@entities/HeightConverter";
+import { BmiCalculator } from "@utils/BmiCalculator";
+import { GetPokemonByNameService } from "@services/GetPokemonByNameService";
+import { GetPokemonByNameUseCase } from "@useCases/GetPokemonByNameUseCase";
+import { GetPokemonByNameController } from "@controllers/GetPokemonByNameController";
+import { BmiClassifier } from "@utils/BmiClassifier";
+import { WeightConverter } from "@utils/WeightConverter";
+import { HeightConverter } from "@utils/HeightConverter";
 
 const routes  = Router();
 

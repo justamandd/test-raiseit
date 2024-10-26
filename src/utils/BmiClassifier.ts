@@ -1,5 +1,4 @@
-import { BmiCategoryEnum } from "@entities/BmiCategoryEnum";
-
+import { BmiCategoryEnum } from "@enums/BmiCategoryEnum";
 
 export class BmiClassifier {
   public getCategory(bmi: number): BmiCategoryEnum {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ListPokemonsUseCase } from "@useCases/ListPokemons/ListPokemonsUseCase";
+import { ListPokemonsUseCase } from "@useCases/ListPokemonsUseCase";
 
 export class ListPokemonsController {
   constructor(private listPokemonsUseCase: ListPokemonsUseCase) {}

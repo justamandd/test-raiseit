@@ -1,9 +1,9 @@
-import { BmiCalculator } from "@entities/BmiCalculator";
-import { BmiCategoryEnum } from "@entities/BmiCategoryEnum";
-import { BmiClassifier } from "@entities/BmiClassifier";
-import { HeightConverter } from "@entities/HeightConverter";
+import { BmiCalculator } from "@utils/BmiCalculator";
+import { BmiCategoryEnum } from "@enums/BmiCategoryEnum";
+import { BmiClassifier } from "@utils/BmiClassifier";
+import { HeightConverter } from "@utils/HeightConverter";
 import { Pokemon } from "@entities/Pokemon";
-import { WeightConverter } from "@entities/WeightConverter";
+import { WeightConverter } from "@utils/WeightConverter";
 
 const mockBmiCalculator: BmiCalculator = {
   calculate: jest.fn((height: number, weight: number) => 0.01)
