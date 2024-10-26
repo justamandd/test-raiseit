@@ -9,18 +9,6 @@ export class GetPokemonByNameController {
   async handle(req: Request, res: Response): Promise<Response> {
     const { name } = req.params;
 
-    if (!name) {
-      return res.status(400).json({
-        message: 'Name is required'
-      });
-    }
-
-    if (!isNaN(parseInt(name as string))) {
-      return res.status(400).json({
-        message: 'Name must contain only letters'
-      });
-    }
-
     try {
       const pokemon = await this.getPokemonByNameUseCase.execute(name as string);
 
