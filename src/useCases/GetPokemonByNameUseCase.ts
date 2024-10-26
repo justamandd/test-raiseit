@@ -1,4 +1,4 @@
-import { GetPokemonByNameDTO } from "../dto/GetPokemonByNameDTO";
+import { GetPokemonByNameDTO } from "@dto/GetPokemonByNameDTO";
 import { GetPokemonByNameService } from "@services/GetPokemonByNameService";
 
 export class GetPokemonByNameUseCase {
